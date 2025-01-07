@@ -4,6 +4,13 @@ import com.badlogic.gdx.Screen;
 
 /** First screen of the application. Displayed after the application is created. */
 public class MainMenuScreen implements Screen {
+
+
+    final affirmation_adventures game;
+
+    public MainMenuScreen(final affirmation_adventures game) {
+        this.game = game;
+    }
     @Override
     public void show() {
         // Prepare your screen here.
@@ -11,6 +18,11 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void render(float delta) {
+		ScreenUtils.clear(Color.BLACK);
+
+		game.viewport.apply();
+		game.batch.setProjectionMatrix(game.viewport.getCamera().combined);
+		game.batch.begin();
         // Draw your screen here. "delta" is the time since last render in seconds.
     }
 

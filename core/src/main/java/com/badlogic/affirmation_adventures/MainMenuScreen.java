@@ -1,15 +1,19 @@
 package com.badlogic.affirmation_adventures;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
 
 /** First screen of the application. Displayed after the application is created. */
 public class MainMenuScreen implements Screen {
-
+    Texture playButton;
+    Texture playButtonPressed;
 
     final affirmation_adventures game;
 
     public MainMenuScreen(final affirmation_adventures game) {
         this.game = game;
+        playButton = new Texture("playbutton.png");
+        playButtonPressed = new Texture("playbuttonpressed.png");
     }
     @Override
     public void show() {

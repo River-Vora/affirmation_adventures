@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class MainMenuScreen implements Screen {
     Texture playButton;
     Texture playButtonPressed;
+    Texture menuBackground;
 
     final affirmation_adventures game;
 
@@ -14,6 +15,7 @@ public class MainMenuScreen implements Screen {
         this.game = game;
         playButton = new Texture("playbutton.png");
         playButtonPressed = new Texture("playbuttonpressed.png");
+        menuBackground = new Texture("Menu_Backdrop.png");
     }
     @Override
     public void show() {
@@ -22,12 +24,7 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void render(float delta) {
-		ScreenUtils.clear(Color.BLACK);
-
-		game.viewport.apply();
-		game.batch.setProjectionMatrix(game.viewport.getCamera().combined);
-		game.batch.begin();
-        // Draw your screen here. "delta" is the time since last render in seconds.
+        
     }
 
     @Override

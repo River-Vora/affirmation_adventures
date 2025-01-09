@@ -2,6 +2,9 @@ package com.badlogic.affirmation_adventures;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.utils.ScreenUtils;
 
 /** First screen of the application. Displayed after the application is created. */
 public class MainMenuScreen implements Screen {
@@ -24,7 +27,21 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        
+        draw();
+    }
+
+    private void draw() {
+        ScreenUtils.clear(Color.BLACK);
+        game.viewport.apply;
+        game.batch.setProjectionMatrix(game.viewport.getCamera().combined);
+        game.batch.begin();
+
+        float worldWidth = game.viewport.getWorldWidth();
+        float worldHeight = game.viewport.getWorldHeight();
+
+        game.batch.draw(menuBackground, 0, 0, worldWidth, worldHeight);
+
+        game.batch.end();
     }
 
     @Override

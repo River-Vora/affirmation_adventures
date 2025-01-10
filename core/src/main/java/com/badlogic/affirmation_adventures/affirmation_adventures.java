@@ -25,4 +25,14 @@ public class affirmation_adventures extends Game {
 
         this.setScreen(new MainMenuScreen(this));
     }
+
+    public void render() {
+        super.render();
+    }
+
+    public void dispose() {
+        batch.dispose();
+        font.dispose();
+        screen.dispose();
+    }
 }

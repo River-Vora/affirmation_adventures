@@ -19,7 +19,8 @@ public class MainMenuScreen implements Screen {
 
         playButton = new Texture("playbutton.png");
         playButtonPressed = new Texture("playbuttonpressed.png");
-        menuBackground = new Texture("Menu_Backdrop.png");
+        menuBackground = new Texture("menuBackdrop.png");
+        menuBackground.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
     @Override
     public void show() {

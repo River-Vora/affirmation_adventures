@@ -7,6 +7,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 /** First screen of the application. Displayed after the application is created. */
 public class MainMenuScreen implements Screen {
+    
     Texture playButton;
     Texture playButtonPressed;
     Texture menuBackground;
@@ -15,6 +16,7 @@ public class MainMenuScreen implements Screen {
 
     public MainMenuScreen(final affirmation_adventures game) {
         this.game = game;
+
         playButton = new Texture("playbutton.png");
         playButtonPressed = new Texture("playbuttonpressed.png");
         menuBackground = new Texture("Menu_Backdrop.png");

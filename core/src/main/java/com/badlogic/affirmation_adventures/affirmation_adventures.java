@@ -12,7 +12,7 @@ public class affirmation_adventures extends Game {
     public SpriteBatch batch;
     public BitmapFont font;
     public FitViewport viewport;
-    
+
     @Override
     public void create() {
         setScreen(new MainMenuScreen(this));
@@ -25,6 +25,11 @@ public class affirmation_adventures extends Game {
         font.getData().setScale(viewport.getWorldHeight() / Gdx.graphics.getHeight());
 
         this.setScreen(new MainMenuScreen(this));
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
     }
 
     public void render() {

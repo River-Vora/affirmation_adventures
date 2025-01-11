@@ -12,6 +12,7 @@ public class affirmation_adventures extends Game {
     public SpriteBatch batch;
     public BitmapFont font;
     public FitViewport viewport;
+    
     @Override
     public void create() {
         setScreen(new MainMenuScreen(this));

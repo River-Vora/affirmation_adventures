@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 /** First screen of the application. Displayed after the application is created. */
 public class MainMenuScreen implements Screen {
-    
+
     Texture playButton;
     Texture playButtonPressed;
     Texture menuBackground;
@@ -20,6 +20,7 @@ public class MainMenuScreen implements Screen {
         playButton = new Texture("playbutton.png");
         playButtonPressed = new Texture("playbuttonpressed.png");
         menuBackground = new Texture("Menu_Backdrop.png");
+        menuBackground.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
     @Override
     public void show() {
@@ -43,7 +44,7 @@ public class MainMenuScreen implements Screen {
         float worldHeight = game.viewport.getWorldHeight();
 
         game.batch.draw(menuBackground, 0, 0, worldWidth, worldHeight);
-        
+
         float playButtonX = (worldWidth - playButton.getWidth()) / 2;
         float playButtonY = (worldHeight - playButton.getHeight()) / 2;
         game.batch.draw(playButton, playButtonX, playButtonY);

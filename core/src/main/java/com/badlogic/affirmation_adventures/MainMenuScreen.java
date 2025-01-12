@@ -1,5 +1,6 @@
 package com.badlogic.affirmation_adventures;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -49,6 +50,11 @@ public class MainMenuScreen implements Screen {
         float playButtonY = (worldHeight - playButton.getHeight()) / 2;
         game.batch.draw(playButton, playButtonX, playButtonY);
         game.batch.end();
+
+        if (Gdx.input.isTouched()) {
+            game.setScreen(new GameScreen(game));
+            dispose();
+        }
     }
 
     @Override

@@ -40,6 +40,8 @@ public class affirmation_adventures extends Game {
     public void dispose() {
         batch.dispose();
         font.dispose();
-        screen.dispose();
+        if (screen != null) {
+            screen.dispose();
+        }
     }
 }

@@ -14,7 +14,7 @@ plugins {
   id "application"
 }
 apply plugin: 'io.github.fourlastor.construo'
-apply plugin: 'application'
+
 
 
 import io.github.fourlastor.construo.Target
@@ -52,7 +52,7 @@ run {
 }
 
 jar {
-// sets the name of the .jar file this produces to the name of the game or app, with the version after.
+//sets the name of the .jar file this produces to the name of the game or app, with the version after.
   archiveFileName.set("${appName}-${projectVersion}.jar")
 // the duplicatesStrategy matters starting in Gradle 7.0; this setting works.
   duplicatesStrategy(DuplicatesStrategy.EXCLUDE)

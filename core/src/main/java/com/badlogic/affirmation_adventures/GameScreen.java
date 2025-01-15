@@ -1,13 +1,15 @@
 package com.badlogic.affirmation_adventures;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
 
 public class GameScreen implements Screen {
     final affirmation_adventures game;
+    public AssetManager assetManager;
 
     public GameScreen(final affirmation_adventures game) {
         this.game = game;
-
+        assetManager = new AssetManager();
 
     }
 

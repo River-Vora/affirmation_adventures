@@ -81,5 +81,8 @@ public class MainMenuScreen implements Screen {
     @Override
     public void dispose() {
         // Destroy screen's assets here.
+        playButton.dispose();
+        playButtonPressed.dispose();
+        menuBackground.dispose();
     }
 }

@@ -1,0 +1,39 @@
+{
+  "frames": {
+    "roguelikeDungeon_transparent.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 492,
+        "h": 305
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 492,
+        "h": 305
+      },
+      "sourceSize": {
+        "w": 492,
+        "h": 305
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "Dungeon.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 492,
+      "h": 305
+    },
+    "scale": 1
+  }
+}

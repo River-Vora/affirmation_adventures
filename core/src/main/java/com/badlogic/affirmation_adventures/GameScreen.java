@@ -10,7 +10,22 @@ public class GameScreen implements Screen {
     Texture playerTexture;
     Texture backgroundTexture;
     Sprite playerSprite;
-
+    int torch1X = 903;
+    int torch1Y = 137;
+    int torch2X = 712;
+    int torch2Y = 73;
+    int torch3X = 566;
+    int torch3Y = 186;
+    int torch4X = 791;
+    int torch4Y = 308;
+    int torch5X = 581;
+    int torch5Y = 730;
+    int torch6X = 376;
+    int torch6Y = 811;
+    int torch7X = 600;
+    int torch7Y = 1335;
+    int torch8X = 464;
+    int torch8Y = 1518;
 
     public GameScreen(final affirmation_adventures game) {
         this.game = game;
@@ -30,6 +45,21 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        input();
+        logic();
+        draw();
+
+    }
+
+    private void draw() {
+
+    }
+
+    private void logic() {
+
+    }
+
+    private void input() {
 
     }
 

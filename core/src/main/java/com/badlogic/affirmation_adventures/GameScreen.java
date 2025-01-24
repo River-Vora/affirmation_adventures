@@ -1,15 +1,25 @@
 package com.badlogic.affirmation_adventures;
 
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class GameScreen implements Screen {
     final affirmation_adventures game;
-    public AssetManager assetManager;
+
+    Texture playerTexture;
+    Texture backgroundTexture;
+    Sprite playerSprite;
+
 
     public GameScreen(final affirmation_adventures game) {
         this.game = game;
-        assetManager = new AssetManager();
+
+        backgroundTexture = new Texture("Dungeon.png");
+        playerTexture = new Texture("player.png");
+
+        playerSprite = new Sprite(playerTexture);
+
 
     }
 

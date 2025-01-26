@@ -23,20 +23,20 @@ public class GameScreen implements Screen{
 
     int torch1X = 903;
     int torch1Y = 137;
-    int torch2X = 712;
-    int torch2Y = 73;
-    int torch3X = 566;
-    int torch3Y = 186;
-    int torch4X = 791;
-    int torch4Y = 308;
-    int torch5X = 581;
-    int torch5Y = 730;
-    int torch6X = 376;
-    int torch6Y = 811;
-    int torch7X = 600;
-    int torch7Y = 1335;
-    int torch8X = 464;
-    int torch8Y = 1518;
+    int treasure1X = 712;
+    int treasure1Y = 73;
+    int treasure2X = 566;
+    int treasure2Y = 186;
+    int torch2X = 791;
+    int torch2Y = 308;
+    int torch3X = 581;
+    int torch3Y = 730;
+    int torch4X = 376;
+    int torch4Y = 811;
+    int torch5X = 600;
+    int torch5Y = 1335;
+    int treasure3X = 464;
+    int treasure3Y = 1518;
 
     public GameScreen(final affirmation_adventures game) {
         this.game = game;

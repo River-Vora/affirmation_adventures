@@ -46,8 +46,10 @@ public class GameScreen implements Screen{
         playerSprite = new Sprite(playerTexture);
         playerSprite.setSize(5, 5);
 
+
         map = new TmxMapLoader().load("Dungeon.tmx");
         mapRenderer = new OrthogonalTiledMapRenderer(map, 2 / 16f);
+
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 30, 20);

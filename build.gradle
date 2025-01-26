@@ -10,6 +10,13 @@ buildscript {
   }
   dependencies {
     // Include your dependencies here
+    "com.badlogicgames.gdx:gdx:1.10.0"
+    "com.badlogicgames.gdx:gdx-backend-lwjgl:1.10.0"
+    "com.badlogicgames.gdx:gdx-platform:1.10.0:natives-desktop"
+    "com.badlogicgames.gdx:gdx-freetype:1.10.0"
+    "com.badlogicgames.gdx:gdx-freetype-platform:1.10.0:natives-desktop"
+    "com.badlogicgames.gdx:gdx-tiled-preprocessor:1.10.0"
+    "com.badlogicgames.gdx:gdx-tiled-preprocessor-platform:1.10.0:natives-desktop"
   }
 }
 
@@ -73,5 +80,6 @@ subprojects {
     maven { url = 'https://jitpack.io' }
   }
 }
+
 
 eclipse.project.name = 'affirmation_adventures' + '-parent'

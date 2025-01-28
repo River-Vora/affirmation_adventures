@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="6" nextobjectid="22">
- <tileset firstgid="1" source="Dungeon.tsx"/>
- <layer id="2" name="Dungeon" width="30" height="20" locked="1">
+ <tileset firstgid="1" source="lwjgl3/build/resources/main/Dungeon.tsx"/>
+ <layer id="2" name="Dungeon" width="30" height="20">
   <data encoding="csv">
    <chunk x="-32" y="-48" width="16" height="16">
 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
@@ -509,7 +509,7 @@
 </chunk>
   </data>
  </layer>
- <objectgroup id="5" name="Torches and Treasures" locked="1">
+ <objectgroup id="5" name="Torches and Treasures">
   <object id="1" gid="70" x="270.85" y="-450.823" width="16" height="16"/>
   <object id="3" gid="66" x="271.717" y="-432.609" width="16" height="16"/>
   <object id="6" gid="36" x="46.2088" y="-573.985" width="16" height="16"/>

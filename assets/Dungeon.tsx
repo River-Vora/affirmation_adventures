@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.11.1" name="Dungeon" tilewidth="16" tileheight="16" tilecount="7168" columns="64">
- <image source="lwjgl3/build/resources/main/Dungeon.png" trans="ff00ff" width="1024" height="1792"/>
+ <image source="Dungeon.png" trans="ff00ff" width="1024" height="1792"/>
  <tile id="213">
   <properties>
    <property name="collidable" type="bool" value="true"/>

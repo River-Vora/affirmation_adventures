@@ -7,12 +7,16 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-public class GameScreen implements Screen{
+public class GameScreen implements Screen {
     final affirmation_adventures game;
 
     public Texture playerTexture;
@@ -20,6 +24,8 @@ public class GameScreen implements Screen{
     public OrthogonalTiledMapRenderer mapRenderer;
     public TiledMap map;
     public OrthographicCamera camera;
+
+    public Rectangle playerBounds;
 
     int torch1X = 903;
     int torch1Y = 137;
@@ -46,9 +52,11 @@ public class GameScreen implements Screen{
         playerSprite = new Sprite(playerTexture);
         playerSprite.setSize(5, 5);
 
+        playerBounds = new Rectangle(playerSprite.getX(), playerSprite.getY(), playerSprite.getWidth(), playerSprite.getHeight());
+
 
         map = new TmxMapLoader().load("Dungeon.tmx");
-        mapRenderer = new OrthogonalTiledMapRenderer(map, 2 / 16f);
+        mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
 
 
         camera = new OrthographicCamera();
@@ -71,16 +79,13 @@ public class GameScreen implements Screen{
 
     private void draw() {
         ScreenUtils.clear(Color.BLACK);
-        game.viewport.apply();
-        game.batch.setProjectionMatrix(game.viewport.getCamera().combined);
-
-        camera.position.x = playerSprite.getX();
-        camera.position.y = playerSprite.getY();
+        camera.position.set(playerSprite.getX(), playerSprite.getY(), 0);
         camera.update();
 
         mapRenderer.setView(camera);
         mapRenderer.render();
 
+        game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
         playerSprite.draw(game.batch);
         game.batch.end();
@@ -88,27 +93,51 @@ public class GameScreen implements Screen{
     }
 
     private void logic() {
-
+        playerBounds.setPosition(playerSprite.getX(), playerSprite.getY());
     }
 
     private void input() {
         float speed = 100f;
         float delta = Gdx.graphics.getDeltaTime();
 
+        float moveX = 0;
+        float moveY = 0;
+
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            playerSprite.translateX(speed * delta);
+            moveX = speed * delta;
         }
 
         else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            playerSprite.translateX(-speed * delta);
+            moveX = -speed * delta;
         }
 
         else if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            playerSprite.translateY(speed * delta);
+            moveY = speed * delta;
         }
 
         else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            playerSprite.translateY(-speed * delta);
+            moveY = -speed * delta;
+        }
+
+        playerBounds.setPosition(playerSprite.getX() + moveX, playerSprite.getY() + moveY);
+
+        boolean collision = false;
+
+        MapObjects objects = map.getLayers().get("Collision").getObjects();
+        for (MapObject object : objects) {
+            if (object instanceof RectangleMapObject) {
+                Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                if (object.getProperties().containsKey("collidable") && (boolean) object.getProperties().get("collidable")) {
+                    if (playerBounds.overlaps(rect)) {
+                        collision = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!collision) {
+            playerSprite.translate(moveX, moveY);
         }
     }
 
@@ -116,7 +145,8 @@ public class GameScreen implements Screen{
 
     @Override
     public void resize(int width, int height) {
-        game.viewport.update(width, height, true);
+       camera.setToOrtho(false, 30, 20);
+       camera.update();
     }
 
     @Override

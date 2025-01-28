@@ -3,6 +3,8 @@ package com.badlogic.affirmation_adventures;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -24,11 +26,14 @@ public class GameScreen implements Screen {
     public OrthogonalTiledMapRenderer mapRenderer;
     public TiledMap map;
     public OrthographicCamera camera;
+    private AssetManager assetManager;
 
     public Rectangle playerBounds;
 
     public GameScreen(final affirmation_adventures game) {
         this.game = game;
+        assetManager = new AssetManager();
+        assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 
         try {
             playerTexture = new Texture("player.png");
@@ -43,18 +48,20 @@ public class GameScreen implements Screen {
         }
 
         try {
-            map = new TmxMapLoader().load("Dungeon.tmx");
+            Gdx.app.error("GameScreen", "Loading map: Dungeon.tmx");
+           assetManager.load("Dungeon.tmx", TiledMap.class);
+           assetManager.finishLoading();
+           map = assetManager.get("Dungeon.tmx", TiledMap.class);
             if (map == null) {
                 Gdx.app.error("GameScreen", "Map is null after loading");
+            }
+            else {
+                Gdx.app.log("GameScreen", "Map loaded successfully");
+                mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
             }
         } catch (Exception e) {
             Gdx.app.error("GameScreen", "Failed to load map", e);
         }
-
-        if (map != null) {
-            mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
-        }
-
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 30, 20);
@@ -188,6 +195,9 @@ public class GameScreen implements Screen {
         }
         if (map != null) {
             map.dispose();
+        }
+        if (assetManager != null) {
+            assetManager.dispose();
         }
     }
 }

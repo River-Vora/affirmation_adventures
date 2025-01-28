@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="1" nextlayerid="6" nextobjectid="22">
- <tileset firstgid="1" source="lwjgl3/build/resources/main/Dungeon.tsx"/>
+ <tileset firstgid="1" source="Dungeon.tsx"/>
  <layer id="2" name="Dungeon" width="30" height="20">
   <data encoding="csv">
    <chunk x="-32" y="-48" width="16" height="16">

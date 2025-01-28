@@ -27,36 +27,33 @@ public class GameScreen implements Screen {
 
     public Rectangle playerBounds;
 
-    int torch1X = 903;
-    int torch1Y = 137;
-    int treasure1X = 712;
-    int treasure1Y = 73;
-    int treasure2X = 566;
-    int treasure2Y = 186;
-    int torch2X = 791;
-    int torch2Y = 308;
-    int torch3X = 581;
-    int torch3Y = 730;
-    int torch4X = 376;
-    int torch4Y = 811;
-    int torch5X = 600;
-    int torch5Y = 1335;
-    int treasure3X = 464;
-    int treasure3Y = 1518;
-
     public GameScreen(final affirmation_adventures game) {
         this.game = game;
 
-        playerTexture = new Texture("player.png");
+        try {
+            playerTexture = new Texture("player.png");
+        } catch (Exception e) {
+            Gdx.app.error("GameScreen", "Failed to load player texture", e);
+        }
 
-        playerSprite = new Sprite(playerTexture);
-        playerSprite.setSize(5, 5);
+        if (playerTexture != null) {
+            playerSprite = new Sprite(playerTexture);
+            playerSprite.setSize(5, 5);
+            playerBounds = new Rectangle(playerSprite.getX(), playerSprite.getY(), playerSprite.getWidth(), playerSprite.getHeight());
+        }
 
-        playerBounds = new Rectangle(playerSprite.getX(), playerSprite.getY(), playerSprite.getWidth(), playerSprite.getHeight());
+        try {
+            map = new TmxMapLoader().load("Dungeon.tmx");
+            if (map == null) {
+                Gdx.app.error("GameScreen", "Map is null after loading");
+            }
+        } catch (Exception e) {
+            Gdx.app.error("GameScreen", "Failed to load map", e);
+        }
 
-
-        map = new TmxMapLoader().load("Dungeon.tmx");
-        mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
+        if (map != null) {
+            mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
+        }
 
 
         camera = new OrthographicCamera();
@@ -79,21 +76,29 @@ public class GameScreen implements Screen {
 
     private void draw() {
         ScreenUtils.clear(Color.BLACK);
-        camera.position.set(playerSprite.getX(), playerSprite.getY(), 0);
-        camera.update();
+        if (camera != null && playerSprite != null) {
+            camera.position.set(playerSprite.getX(), playerSprite.getY(), 0);
+            camera.update();
+        }
 
-        mapRenderer.setView(camera);
-        mapRenderer.render();
+        if (mapRenderer != null) {
+            mapRenderer.setView(camera);
+            mapRenderer.render();
+        }
 
-        game.batch.setProjectionMatrix(camera.combined);
-        game.batch.begin();
-        playerSprite.draw(game.batch);
-        game.batch.end();
-
+        if (game.batch != null && camera != null) {
+            game.batch.setProjectionMatrix(camera.combined);
+            game.batch.begin();
+            if (playerSprite != null) {
+                playerSprite.draw(game.batch);
+            }
+            game.batch.end();
+        }
     }
 
     private void logic() {
-        playerBounds.setPosition(playerSprite.getX(), playerSprite.getY());
+        if (playerSprite != null)
+            playerBounds.setPosition(playerSprite.getX(), playerSprite.getY());
     }
 
     private void input() {
@@ -119,24 +124,30 @@ public class GameScreen implements Screen {
             moveY = -speed * delta;
         }
 
-        playerBounds.setPosition(playerSprite.getX() + moveX, playerSprite.getY() + moveY);
+        if (playerSprite != null)
+            playerBounds.setPosition(playerSprite.getX() + moveX, playerSprite.getY() + moveY);
 
         boolean collision = false;
 
-        MapObjects objects = map.getLayers().get("Collision").getObjects();
-        for (MapObject object : objects) {
-            if (object instanceof RectangleMapObject) {
-                Rectangle rect = ((RectangleMapObject) object).getRectangle();
-                if (object.getProperties().containsKey("collidable") && (boolean) object.getProperties().get("collidable")) {
-                    if (playerBounds.overlaps(rect)) {
-                        collision = true;
-                        break;
+        MapObjects objects= null;
+        if (map != null && map.getLayers().get("Torches and Treasures") != null) {
+            objects = map.getLayers().get("Torches and Treasures").getObjects();
+        }
+        if (objects !=null) {
+            for (MapObject object : objects) {
+                if (object instanceof RectangleMapObject) {
+                    Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                    if (object.getProperties().containsKey("collidable") && (boolean) object.getProperties().get("collidable")) {
+                        if (playerBounds.overlaps(rect)) {
+                            collision = true;
+                            break;
+                        }
                     }
                 }
             }
         }
 
-        if (!collision) {
+        if (!collision && playerSprite != null) {
             playerSprite.translate(moveX, moveY);
         }
     }
@@ -145,8 +156,11 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-       camera.setToOrtho(false, 30, 20);
-       camera.update();
+        if (camera != null) {
+            camera.setToOrtho(false, 30, 20);
+            camera.update();
+        }
+
     }
 
     @Override
@@ -166,9 +180,14 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        playerTexture.dispose();
-        mapRenderer.dispose();
-        map.dispose();
-
+        if (playerTexture != null) {
+            playerTexture.dispose();
+        }
+        if (mapRenderer != null) {
+            mapRenderer.dispose();
+        }
+        if (map != null) {
+            map.dispose();
+        }
     }
 }

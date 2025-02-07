@@ -3,8 +3,6 @@ package com.badlogic.affirmation_adventures;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -24,16 +22,19 @@ public class GameScreen implements Screen {
     public Texture playerTexture;
     public Sprite playerSprite;
     public OrthogonalTiledMapRenderer mapRenderer;
-    public TiledMap map;
+    public TiledMap map = new TmxMapLoader().load("Dungeon.tmx");
     public OrthographicCamera camera;
-    private AssetManager assetManager;
+    // private AssetManager assetManager;
 
     public Rectangle playerBounds;
 
     public GameScreen(final affirmation_adventures game) {
         this.game = game;
+
+        /*
         assetManager = new AssetManager();
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
+
 
         try {
             playerTexture = new Texture("player.png");
@@ -47,8 +48,10 @@ public class GameScreen implements Screen {
             playerBounds = new Rectangle(playerSprite.getX(), playerSprite.getY(), playerSprite.getWidth(), playerSprite.getHeight());
         }
 
-        try {
-            Gdx.app.error("GameScreen", "Loading map: Dungeon.tmx");
+        mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
+
+        /*try {
+            Gdx.app.log("GameScreen", "Loading map: Dungeon.tmx");
            assetManager.load("Dungeon.tmx", TiledMap.class);
            assetManager.finishLoading();
            map = assetManager.get("Dungeon.tmx", TiledMap.class);
@@ -62,6 +65,7 @@ public class GameScreen implements Screen {
         } catch (Exception e) {
             Gdx.app.error("GameScreen", "Failed to load map", e);
         }
+        */
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 30, 20);
@@ -196,8 +200,10 @@ public class GameScreen implements Screen {
         if (map != null) {
             map.dispose();
         }
-        if (assetManager != null) {
+        /* if (assetManager != null) {
             assetManager.dispose();
         }
+
+         */
     }
 }

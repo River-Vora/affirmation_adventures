@@ -63,7 +63,7 @@ public class MainMenuScreen implements Screen {
         game.batch.draw(playButton, playButtonX, playButtonY);
         game.batch.end();
 
-        if (Gdx.input.isTouched()) {
+        if (Gdx.input.isTouched() && Gdx.input.getX() >= playButtonX && Gdx.input.getX() <= playButtonX + playButton.getWidth() && worldHeight - Gdx.input.getY() >= playButtonY && worldHeight - Gdx.input.getY() <= playButtonY + playButton.getHeight()) {
             game.setScreen(new GameScreen(game));
             dispose();
         }

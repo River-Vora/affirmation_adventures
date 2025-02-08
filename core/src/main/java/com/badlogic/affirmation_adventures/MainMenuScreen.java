@@ -6,7 +6,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-/** First screen of the application. Displayed after the application is created. */
+/**
+ * First screen of the application. Displayed after the application is created.
+ */
+
 public class MainMenuScreen implements Screen {
 
     Texture playButton;
@@ -14,6 +17,11 @@ public class MainMenuScreen implements Screen {
     Texture menuBackground;
 
     final affirmation_adventures game;
+
+    /**
+     * Constructs a new MainMenuScreen.
+     * @param game the main game instance
+     */
 
     public MainMenuScreen(final affirmation_adventures game) {
         this.game = game;
@@ -32,6 +40,10 @@ public class MainMenuScreen implements Screen {
     public void render(float delta) {
         draw();
     }
+
+    /**
+     * Handles the drawing of the main menu screen.
+     */
 
     private void draw() {
         ScreenUtils.clear(Color.BLACK);
@@ -82,7 +94,7 @@ public class MainMenuScreen implements Screen {
     public void dispose() {
         playButton.dispose();
         playButtonPressed.dispose();
-        menuBackground.dispose();        
+        menuBackground.dispose();
         // Destroy screen's assets here.
         playButton.dispose();
         playButtonPressed.dispose();

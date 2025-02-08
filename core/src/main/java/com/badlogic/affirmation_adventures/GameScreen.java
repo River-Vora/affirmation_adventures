@@ -16,6 +16,10 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+/**
+ * Represents the game screen where the main gameplay occurs.
+ */
+
 public class GameScreen implements Screen {
     final affirmation_adventures game;
 
@@ -27,6 +31,12 @@ public class GameScreen implements Screen {
     // private AssetManager assetManager;
 
     public Rectangle playerBounds;
+
+    /**
+     * Constructs a new GameScreen.
+     *
+     * @param game the main game instance
+     */
 
     public GameScreen(final affirmation_adventures game) {
         this.game = game;
@@ -94,6 +104,10 @@ public class GameScreen implements Screen {
 
     }
 
+    /**
+     * Handles the drawing of the game screen.
+     */
+
     private void draw() {
         ScreenUtils.clear(Color.BLACK);
         if (camera != null && playerSprite != null) {
@@ -116,10 +130,18 @@ public class GameScreen implements Screen {
         }
     }
 
+    /**
+     * Handles the game logic.
+     */
+
     private void logic() {
         if (playerSprite != null)
             playerBounds.setPosition(playerSprite.getX(), playerSprite.getY());
     }
+
+    /**
+     * Handles the user input.
+     */
 
     private void input() {
         float speed = 100f;

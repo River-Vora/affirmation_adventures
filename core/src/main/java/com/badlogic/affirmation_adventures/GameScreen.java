@@ -22,8 +22,8 @@ public class GameScreen implements Screen {
     public Texture playerTexture;
     public Sprite playerSprite;
     public OrthogonalTiledMapRenderer mapRenderer;
-    public TiledMap map = new TmxMapLoader().load("Dungeon.tmx");
-    public OrthographicCamera camera;
+    public OrthographicCamera camera = new OrthographicCamera();
+    public TiledMap map = new TmxMapLoader().load("/Users/premavora/Documents/GitHub/affirmation_adventures-1/assets/Dungeon.tmx");
     // private AssetManager assetManager;
 
     public Rectangle playerBounds;
@@ -35,6 +35,7 @@ public class GameScreen implements Screen {
         assetManager = new AssetManager();
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 
+         */
 
         try {
             playerTexture = new Texture("player.png");
@@ -50,7 +51,8 @@ public class GameScreen implements Screen {
 
         mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
 
-        /*try {
+        /*t
+        ry {
             Gdx.app.log("GameScreen", "Loading map: Dungeon.tmx");
            assetManager.load("Dungeon.tmx", TiledMap.class);
            assetManager.finishLoading();
@@ -67,14 +69,21 @@ public class GameScreen implements Screen {
         }
         */
 
-        camera = new OrthographicCamera();
+        int mapWidth = map.getProperties().get("width", Integer.class);
+        int mapHeight = map.getProperties().get("height", Integer.class);
+        int tilePixelWidth = map.getProperties().get("tilewidth", Integer.class);
+        int tilePixelHeight = map.getProperties().get("tileheight", Integer.class);
+        float centerX = (mapWidth * tilePixelWidth) / 2f;
+        float centerY = (mapHeight * tilePixelHeight) / 2f;
+
+        camera.position.set(centerX, centerY, 0);
         camera.setToOrtho(false, 30, 20);
         camera.update();
     }
 
     @Override
     public void show() {
-
+        // Prepare your screen here.
     }
 
     @Override
@@ -135,10 +144,7 @@ public class GameScreen implements Screen {
             moveY = -speed * delta;
         }
 
-        if (playerSprite != null)
-            playerBounds.setPosition(playerSprite.getX() + moveX, playerSprite.getY() + moveY);
-
-        boolean collision = false;
+       /* boolean collision = false;
 
         MapObjects objects= null;
         if (map != null && map.getLayers().get("Torches and Treasures") != null) {
@@ -160,7 +166,9 @@ public class GameScreen implements Screen {
 
         if (!collision && playerSprite != null) {
             playerSprite.translate(moveX, moveY);
+            playerBounds.setPosition(playerSprite.getX(), playerSprite.getY());
         }
+        */
     }
 
 

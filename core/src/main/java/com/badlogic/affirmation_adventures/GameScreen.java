@@ -7,58 +7,93 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-public class GameScreen implements Screen{
+/**
+ * Represents the game screen where the main gameplay occurs.
+ */
+
+public class GameScreen implements Screen {
     final affirmation_adventures game;
 
     public Texture playerTexture;
     public Sprite playerSprite;
     public OrthogonalTiledMapRenderer mapRenderer;
-    public TiledMap map;
-    public OrthographicCamera camera;
+    public OrthographicCamera camera = new OrthographicCamera();
+    public TiledMap map = new TmxMapLoader().load("/Users/premavora/Documents/GitHub/affirmation_adventures-1/assets/Dungeon.tmx");
+    // private AssetManager assetManager;
 
-    int torch1X = 903;
-    int torch1Y = 137;
-    int treasure1X = 712;
-    int treasure1Y = 73;
-    int treasure2X = 566;
-    int treasure2Y = 186;
-    int torch2X = 791;
-    int torch2Y = 308;
-    int torch3X = 581;
-    int torch3Y = 730;
-    int torch4X = 376;
-    int torch4Y = 811;
-    int torch5X = 600;
-    int torch5Y = 1335;
-    int treasure3X = 464;
-    int treasure3Y = 1518;
+    public Rectangle playerBounds;
+
+    /**
+     * Constructs a new GameScreen.
+     *
+     * @param game the main game instance
+     */
 
     public GameScreen(final affirmation_adventures game) {
         this.game = game;
 
-        playerTexture = new Texture("player.png");
+        /*
+        assetManager = new AssetManager();
+        assetManager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));
 
-        playerSprite = new Sprite(playerTexture);
-        playerSprite.setSize(5, 5);
+         */
 
+        try {
+            playerTexture = new Texture("player.png");
+        } catch (Exception e) {
+            Gdx.app.error("GameScreen", "Failed to load player texture", e);
+        }
 
-        map = new TmxMapLoader().load("Dungeon.tmx");
-        mapRenderer = new OrthogonalTiledMapRenderer(map, 2 / 16f);
+        if (playerTexture != null) {
+            playerSprite = new Sprite(playerTexture);
+            playerSprite.setSize(5, 5);
+            playerBounds = new Rectangle(playerSprite.getX(), playerSprite.getY(), playerSprite.getWidth(), playerSprite.getHeight());
+        }
 
+        mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
 
-        camera = new OrthographicCamera();
+        /*t
+        ry {
+            Gdx.app.log("GameScreen", "Loading map: Dungeon.tmx");
+           assetManager.load("Dungeon.tmx", TiledMap.class);
+           assetManager.finishLoading();
+           map = assetManager.get("Dungeon.tmx", TiledMap.class);
+            if (map == null) {
+                Gdx.app.error("GameScreen", "Map is null after loading");
+            }
+            else {
+                Gdx.app.log("GameScreen", "Map loaded successfully");
+                mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
+            }
+        } catch (Exception e) {
+            Gdx.app.error("GameScreen", "Failed to load map", e);
+        }
+        */
+
+        int mapWidth = map.getProperties().get("width", Integer.class);
+        int mapHeight = map.getProperties().get("height", Integer.class);
+        int tilePixelWidth = map.getProperties().get("tilewidth", Integer.class);
+        int tilePixelHeight = map.getProperties().get("tileheight", Integer.class);
+        float centerX = (mapWidth * tilePixelWidth) / 2f;
+        float centerY = (mapHeight * tilePixelHeight) / 2f;
+
+        camera.position.set(centerX, centerY, 0);
         camera.setToOrtho(false, 30, 20);
         camera.update();
     }
 
     @Override
     public void show() {
-
+        // Prepare your screen here.
     }
 
     @Override
@@ -69,54 +104,104 @@ public class GameScreen implements Screen{
 
     }
 
+    /**
+     * Handles the drawing of the game screen.
+     */
+
     private void draw() {
         ScreenUtils.clear(Color.BLACK);
-        game.viewport.apply();
-        game.batch.setProjectionMatrix(game.viewport.getCamera().combined);
+        if (camera != null && playerSprite != null) {
+            camera.position.set(playerSprite.getX(), playerSprite.getY(), 0);
+            camera.update();
+        }
 
-        camera.position.x = playerSprite.getX();
-        camera.position.y = playerSprite.getY();
-        camera.update();
+        if (mapRenderer != null) {
+            mapRenderer.setView(camera);
+            mapRenderer.render();
+        }
 
-        mapRenderer.setView(camera);
-        mapRenderer.render();
-
-        game.batch.begin();
-        playerSprite.draw(game.batch);
-        game.batch.end();
-
+        if (game.batch != null && camera != null) {
+            game.batch.setProjectionMatrix(camera.combined);
+            game.batch.begin();
+            if (playerSprite != null) {
+                playerSprite.draw(game.batch);
+            }
+            game.batch.end();
+        }
     }
+
+    /**
+     * Handles the game logic.
+     */
 
     private void logic() {
-
+        if (playerSprite != null)
+            playerBounds.setPosition(playerSprite.getX(), playerSprite.getY());
     }
+
+    /**
+     * Handles the user input.
+     */
 
     private void input() {
         float speed = 100f;
         float delta = Gdx.graphics.getDeltaTime();
 
+        float moveX = 0;
+        float moveY = 0;
+
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            playerSprite.translateX(speed * delta);
+            moveX = speed * delta;
         }
 
         else if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            playerSprite.translateX(-speed * delta);
+            moveX = -speed * delta;
         }
 
         else if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            playerSprite.translateY(speed * delta);
+            moveY = speed * delta;
         }
 
         else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            playerSprite.translateY(-speed * delta);
+            moveY = -speed * delta;
         }
+
+       /* boolean collision = false;
+
+        MapObjects objects= null;
+        if (map != null && map.getLayers().get("Torches and Treasures") != null) {
+            objects = map.getLayers().get("Torches and Treasures").getObjects();
+        }
+        if (objects !=null) {
+            for (MapObject object : objects) {
+                if (object instanceof RectangleMapObject) {
+                    Rectangle rect = ((RectangleMapObject) object).getRectangle();
+                    if (object.getProperties().containsKey("collidable") && (boolean) object.getProperties().get("collidable")) {
+                        if (playerBounds.overlaps(rect)) {
+                            collision = true;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (!collision && playerSprite != null) {
+            playerSprite.translate(moveX, moveY);
+            playerBounds.setPosition(playerSprite.getX(), playerSprite.getY());
+        }
+        */
     }
 
 
 
     @Override
     public void resize(int width, int height) {
-        game.viewport.update(width, height, true);
+        if (camera != null) {
+            camera.setToOrtho(false, 30, 20);
+            camera.update();
+        }
+
     }
 
     @Override
@@ -136,9 +221,19 @@ public class GameScreen implements Screen{
 
     @Override
     public void dispose() {
-        playerTexture.dispose();
-        mapRenderer.dispose();
-        map.dispose();
+        if (playerTexture != null) {
+            playerTexture.dispose();
+        }
+        if (mapRenderer != null) {
+            mapRenderer.dispose();
+        }
+        if (map != null) {
+            map.dispose();
+        }
+        /* if (assetManager != null) {
+            assetManager.dispose();
+        }
 
+         */
     }
 }

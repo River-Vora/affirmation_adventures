@@ -15,6 +15,8 @@ public class MainMenuScreen implements Screen {
     Texture playButton;
     Texture playButtonPressed;
     Texture menuBackground;
+    Texture OptionsButton;
+    Texture OptionsButtonPressed;
 
     final affirmation_adventures game;
 
@@ -26,6 +28,8 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(final affirmation_adventures game) {
         this.game = game;
 
+        OptionsButton = new Texture("OptionsButton.png");
+        OptionsButtonPressed = new Texture("OptionsButtonPressed.png");
         playButton = new Texture("playbutton.png");
         playButtonPressed = new Texture("playbuttonpressed.png");
         menuBackground = new Texture("Menu_Backdrop.png");
@@ -61,11 +65,27 @@ public class MainMenuScreen implements Screen {
         float playButtonX = (worldWidth - playButton.getWidth()) / 2;
         float playButtonY = (worldHeight - playButton.getHeight()) / 2;
         game.batch.draw(playButton, playButtonX, playButtonY);
+
+        float optionsButtonX = (worldWidth - OptionsButton.getWidth()) / 2;
+        float optionsButtonY = playButtonY - OptionsButton.getHeight() - 20; // 10 pixels below the Play button
+        game.batch.draw(OptionsButton, optionsButtonX, optionsButtonY);
+
         game.batch.end();
 
-        if (Gdx.input.isTouched() && Gdx.input.getX() >= playButtonX && Gdx.input.getX() <= playButtonX + playButton.getWidth() && worldHeight - Gdx.input.getY() >= playButtonY && worldHeight - Gdx.input.getY() <= playButtonY + playButton.getHeight()) {
-            game.setScreen(new GameScreen(game));
-            dispose();
+        if (Gdx.input.isTouched()) {
+            float touchX = Gdx.input.getX();
+            float touchY = worldHeight - Gdx.input.getY();
+
+            if (touchX >= playButtonX && touchX <= playButtonX + playButton.getWidth() &&
+                touchY >= playButtonY && touchY <= playButtonY + playButton.getHeight()) {
+                game.setScreen(new GameScreen(game));
+                dispose();
+            }
+            else if (touchX >= optionsButtonX && touchX <= optionsButtonX + OptionsButton.getWidth() &&
+                touchY >= optionsButtonY && touchY <= optionsButtonY + OptionsButton.getHeight()) {
+                game.setScreen(new OptionsScreen(game));
+                dispose();
+            }
         }
     }
 

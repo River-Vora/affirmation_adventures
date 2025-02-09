@@ -7,9 +7,6 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -27,7 +24,7 @@ public class GameScreen implements Screen {
     public Sprite playerSprite;
     public OrthogonalTiledMapRenderer mapRenderer;
     public OrthographicCamera camera = new OrthographicCamera();
-    public TiledMap map = new TmxMapLoader().load("/Users/premavora/Documents/GitHub/affirmation_adventures-1/assets/Dungeon.tmx");
+    public TiledMap map = new TmxMapLoader().load("/Users/premavora/Projects/affirmation_adventures/assets/Dungeon.tmx");
     // private AssetManager assetManager;
 
     public Rectangle playerBounds;
@@ -61,8 +58,8 @@ public class GameScreen implements Screen {
 
         mapRenderer = new OrthogonalTiledMapRenderer(map, 1 / 16f);
 
-        /*t
-        ry {
+        /*
+        try {
             Gdx.app.log("GameScreen", "Loading map: Dungeon.tmx");
            assetManager.load("Dungeon.tmx", TiledMap.class);
            assetManager.finishLoading();
@@ -230,7 +227,8 @@ public class GameScreen implements Screen {
         if (map != null) {
             map.dispose();
         }
-        /* if (assetManager != null) {
+        /*
+        if (assetManager != null) {
             assetManager.dispose();
         }
 

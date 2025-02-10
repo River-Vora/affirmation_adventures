@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"com.badlogic.affirmation_adventures","l":"affirmation_adventures"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.badlogic.affirmation_adventures","l":"GameScreen"},{"p":"com.badlogic.affirmation_adventures","l":"MainMenuScreen"},{"p":"com.badlogic.affirmation_adventures","l":"OptionsScreen"}];updateSearchResults();

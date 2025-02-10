@@ -1,6 +1,8 @@
 name: Check Signoff
 
-on: [pull_request]
+on:
+    pull_request:
+        types: [opened]
 
 jobs:
   check-signoff:

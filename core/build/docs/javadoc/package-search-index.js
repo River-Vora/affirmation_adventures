@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.badlogic.affirmation_adventures"}];updateSearchResults();

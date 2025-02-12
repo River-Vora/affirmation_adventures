@@ -13,7 +13,7 @@
 ## Reviewing cheatsheet
 
 Before merging the PR, comments starting with 
-- ❌ ❓***must*** be fixed
+- ❌ ❓<ins>***must***</ins> be fixed
 - 🤔 💅 **should** be fixed
 - 💭 _may_ be fixed
 - 🎉 celebrate happy things

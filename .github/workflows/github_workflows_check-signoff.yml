@@ -2,7 +2,7 @@ name: Check Signoff
 
 on:
     pull_request:
-        types: [opened]
+        types: [all]
 
 jobs:
   check-signoff:

@@ -1,6 +1,6 @@
 name: Documentation
 description: Report a problem with our documentation
-labels: [ "a:documentation", "to-triage" ]
+labels: [ "a:documentation" ]
 assignees: [ ]
 body:
   - type: markdown

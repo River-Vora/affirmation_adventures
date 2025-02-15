@@ -1,6 +1,5 @@
 # https://editorconfig.org
 root = true
-//This is a .editorconfig file
 
 [*]
 indent_style = space

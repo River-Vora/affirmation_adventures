@@ -163,7 +163,7 @@ public class GameScreen implements Screen {
      */
 
     private void input() {
-        float speed = 10f;
+        float speed = 20f;
         float delta = Gdx.graphics.getDeltaTime();
 
         float moveX = 0;

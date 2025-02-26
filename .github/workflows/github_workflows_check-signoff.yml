@@ -12,7 +12,7 @@ jobs:
     - name: Verify commit sign-offs
       run: |
         # Get the list of commits in the pull request
-        commits=$(git rev-list HEAD ^origin/main)
+        commits=$(git rev-list HEAD)
 
         # Check each commit for sign-off
         for commit in $commits; do

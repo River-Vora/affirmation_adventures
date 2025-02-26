@@ -103,7 +103,7 @@ public class GameScreen implements Screen {
             float centerY = (mapHeight * tilePixelHeight) / 2f;
 
             camera.position.set(centerX, centerY, 0);
-            camera.setToOrtho(false, 100, 100);
+            camera.setToOrtho(false, 70, 70);
             camera.update();
         }
     }

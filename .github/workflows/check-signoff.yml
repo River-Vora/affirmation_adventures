@@ -2,6 +2,8 @@ name: Check Signoff
 
 on:
     pull_request:
+        branches:
+            - main
 jobs:
   check-signoff:
     runs-on: ubuntu-latest

@@ -2,6 +2,7 @@ package com.badlogic.affirmation_adventures;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -17,6 +18,7 @@ public class MainMenuScreen implements Screen {
     Texture menuBackground;
     Texture OptionsButton;
     Texture OptionsButtonPressed;
+    Music music;
 
     final affirmation_adventures game;
 
@@ -34,6 +36,7 @@ public class MainMenuScreen implements Screen {
         playButtonPressed = new Texture("playbuttonpressed.png");
         menuBackground = new Texture("Menu_Backdrop.png");
         menuBackground.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        music = Gdx.audio.newMusic(Gdx.files.internal("BattleTheme.mp3"));
     }
     @Override
     public void show() {
@@ -74,7 +77,9 @@ public class MainMenuScreen implements Screen {
 
         if (Gdx.input.isTouched()) {
             float touchX = Gdx.input.getX();
-            float touchY = worldHeight - Gdx.input.getY();
+            float touchY = Gdx.input.getY();
+
+            touchY = worldHeight - touchY;
 
             if (touchX >= playButtonX && touchX <= playButtonX + playButton.getWidth() &&
                 touchY >= playButtonY && touchY <= playButtonY + playButton.getHeight()) {
@@ -83,7 +88,7 @@ public class MainMenuScreen implements Screen {
             }
             else if (touchX >= optionsButtonX && touchX <= optionsButtonX + OptionsButton.getWidth() &&
                 touchY >= optionsButtonY && touchY <= optionsButtonY + OptionsButton.getHeight()) {
-                game.setScreen(new OptionsScreen(game));
+                game.setScreen(new OptionsScreen(game, music));
                 dispose();
             }
         }
@@ -119,5 +124,7 @@ public class MainMenuScreen implements Screen {
         playButton.dispose();
         playButtonPressed.dispose();
         menuBackground.dispose();
+        OptionsButton.dispose();
+        OptionsButtonPressed.dispose();
     }
 }

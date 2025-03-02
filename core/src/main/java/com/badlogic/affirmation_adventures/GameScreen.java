@@ -3,6 +3,7 @@ package com.badlogic.affirmation_adventures;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -35,6 +36,7 @@ public class GameScreen implements Screen {
     public Rectangle playerBounds;
     public Texture WindowTexture;
     public Sprite Windowsprite;
+    Music music;
 
     /**
      * Constructs a new GameScreen.
@@ -50,6 +52,9 @@ public class GameScreen implements Screen {
         } catch (Exception e) {
             Gdx.app.error("GameScreen", "Failed to load player texture", e);
         }
+
+        music = Gdx.audio.newMusic(Gdx.files.internal("BattleTheme.mp3"));
+        music.setLooping(true);
 
         if (playerTexture != null) {
             playerSprite = new Sprite(playerTexture);
@@ -96,6 +101,7 @@ public class GameScreen implements Screen {
     @Override
     public void show() {
         // Prepare your screen here.
+        music.play();
     }
 
     @Override

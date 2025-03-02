@@ -1,6 +1,15 @@
 package com.badlogic.affirmation_adventures;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 /**
  * Represents the options screen where the player can change settings.
@@ -9,13 +18,40 @@ import com.badlogic.gdx.Screen;
 public class OptionsScreen implements Screen {
     final affirmation_adventures game;
 
+    public Stage stage;
+    public Music music;
     /**
      * Constructs a new OptionsScreen.
-     * @param game the main game instance
+     *
+     * @param game  the main game instance
+     * @param music Music for the game
      */
 
-    public OptionsScreen(final affirmation_adventures game) {
+    public OptionsScreen(final affirmation_adventures game, Music music) {
         this.game = game;
+        this.music = music;
+        stage = new Stage(new ScreenViewport());
+        Gdx.input.setInputProcessor(stage);
+
+        Skin skin = new Skin(Gdx.files.internal("uiskin.json"));
+
+        // Create a table to organize the layout
+        Table table = new Table();
+        table.setFillParent(true);
+        stage.addActor(table);
+
+        // Create the volume slider
+        Slider volumeSlider = new Slider(0f, 1f, 0.1f, false, skin, "default-horizontal");
+        volumeSlider.setValue(music.getVolume()); // Set initial value to current music volume
+        volumeSlider.addListener(event -> {
+            music.setVolume(volumeSlider.getValue());
+            return false;
+
+        });
+
+        // Add the slider to the table
+        table.add("Volume").pad(10);
+        table.add(volumeSlider).width(200).pad(10);
     }
 
     /**
@@ -34,7 +70,9 @@ public class OptionsScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
+        ScreenUtils.clear(Color.BLACK);
+        stage.act(delta);
+        stage.draw();
     }
 
     /**
@@ -45,7 +83,7 @@ public class OptionsScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-
+        stage.getViewport().update(width, height, true);
     }
 
     /**
@@ -79,6 +117,6 @@ public class OptionsScreen implements Screen {
      */
     @Override
     public void dispose() {
-
+        stage.dispose();
     }
 }

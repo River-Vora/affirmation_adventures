@@ -19,3 +19,5 @@ instructionsButton.jpg
 playbutton.png
 playbuttonpressed.png
 player.png
+popup_imageEdited.png
+popup_imageOriginal.png

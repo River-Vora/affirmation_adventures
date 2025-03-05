@@ -6,7 +6,7 @@ import com.badlogic.affirmation_adventures.affirmation_adventures;
 
 /** Launches the desktop (LWJGL3) application. */
 public class Lwjgl3Launcher {
-    /** Main method; creates and starts a new Lwjgl3Application. */
+    /** @param args Main method; creates and starts a new Lwjgl3Application. */
     public static void main(String[] args) {
         if (StartupHelper.startNewJvmIfRequired()) return; // This handles macOS support and helps on Windows.
         createApplication();

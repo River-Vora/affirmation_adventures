@@ -4,6 +4,17 @@ import com.badlogic.gdx.Screen;
 
 public class GameOverScreen implements Screen {
 
+    final affirmation_adventures game;
+
+    /**
+     * Constructs a new GameOverScreen.
+     * @param game the main game instance
+     */
+
+    public GameOverScreen(final affirmation_adventures game) {
+        this.game = game;
+    }
+
     @Override
     public void show() {
 

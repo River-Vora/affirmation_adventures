@@ -7,7 +7,7 @@
 
 ## Contributor Checklist
 - [ ] Make sure that all commits are [signed off](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---signoff) to indicate that you agree to the terms of [Developer Certificate of Origin](https://developercertificate.org/).
-- [ ] Make sure all contributed code can be distributed under the terms of the [Apache License 2.0](https://github.com/gradle/gradle/blob/master/LICENSE), e.g. the code was written by yourself or the original code is licensed under [a license compatible to Apache License 2.0](https://apache.org/legal/resolved.html).
+- [ ] Make sure all contributed code can be distributed under the terms of the [Apache License 2.0](https://github.com/River-Vora/affirmation_adventures/blob/main/LICENSE), e.g. the code was written by yourself or the original code is licensed under [a license compatible to Apache License 2.0](https://apache.org/legal/resolved.html).
 - [ ] Update Javadoc for public-facing changes.
 
 ## Reviewing cheatsheet

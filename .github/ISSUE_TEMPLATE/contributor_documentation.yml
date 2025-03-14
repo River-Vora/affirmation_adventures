@@ -6,8 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please search related information in our [latest documentation](https://docs.gradle.org/current/userguide/userguide.html) before opening a documentation issue.
-        If you need help with Gradle or have a usage question, please reach [our community](http://help.gradle.org/) instead of creating an issue.
+        If you see a need for improvement to our documentation, make the issue here.
 
         If you found a clear typo, please open a PR with a fix instead of opening an issue.
 

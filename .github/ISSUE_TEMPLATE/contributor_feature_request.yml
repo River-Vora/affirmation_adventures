@@ -6,14 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please follow the instructions below.
-        We receive dozens of issues every week, so to stay productive, we will close issues that don't provide enough information.
-
-        Please open Android-related issues on [the Android Issue Tracker](https://source.android.com/source/report-bugs)
-        Please open IntelliJ-related issues on [the JetBrains Issue Tracker](https://youtrack.jetbrains.com/newIssue?project=IDEA)
-        Please open Gradle Native-related issues on [the Gradle Native repository](https://github.com/gradle/gradle-native/issues)
-
-        Provide a brief summary of the issue in the title above
+        If you have a request or idea for a new feature, use this issue template.
+        Provide a brief summary of the feature in the title above
   - type: textarea
     id: expected-behavior
     attributes:

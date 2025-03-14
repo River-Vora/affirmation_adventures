@@ -16,8 +16,6 @@ public class MainMenuScreen implements Screen {
     Texture playButton;
     Texture playButtonPressed;
     Texture menuBackground;
-    Texture OptionsButton;
-    Texture OptionsButtonPressed;
     Music music;
 
     final affirmation_adventures game;
@@ -30,8 +28,6 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(final affirmation_adventures game) {
         this.game = game;
 
-        OptionsButton = new Texture("OptionsButton.png");
-        OptionsButtonPressed = new Texture("OptionsButtonPressed.png");
         playButton = new Texture("playbutton.png");
         playButtonPressed = new Texture("playbuttonpressed.png");
         menuBackground = new Texture("Menu_Backdrop.png");
@@ -69,9 +65,6 @@ public class MainMenuScreen implements Screen {
         float playButtonY = (worldHeight - playButton.getHeight()) / 2;
         game.batch.draw(playButton, playButtonX, playButtonY);
 
-        float optionsButtonX = (worldWidth - OptionsButton.getWidth()) / 2;
-        float optionsButtonY = playButtonY - OptionsButton.getHeight() - 20; // 10 pixels below the Play button
-        game.batch.draw(OptionsButton, optionsButtonX, optionsButtonY);
 
         game.batch.end();
 
@@ -84,11 +77,6 @@ public class MainMenuScreen implements Screen {
             if (touchX >= playButtonX && touchX <= playButtonX + playButton.getWidth() &&
                 touchY >= playButtonY && touchY <= playButtonY + playButton.getHeight()) {
                 game.setScreen(new GameScreen(game));
-                dispose();
-            }
-            else if (touchX >= optionsButtonX && touchX <= optionsButtonX + OptionsButton.getWidth() &&
-                touchY >= optionsButtonY && touchY <= optionsButtonY + OptionsButton.getHeight()) {
-                game.setScreen(new OptionsScreen(game, music));
                 dispose();
             }
         }
@@ -120,11 +108,8 @@ public class MainMenuScreen implements Screen {
         playButton.dispose();
         playButtonPressed.dispose();
         menuBackground.dispose();
-        // Destroy screen's assets here.
         playButton.dispose();
         playButtonPressed.dispose();
         menuBackground.dispose();
-        OptionsButton.dispose();
-        OptionsButtonPressed.dispose();
     }
 }

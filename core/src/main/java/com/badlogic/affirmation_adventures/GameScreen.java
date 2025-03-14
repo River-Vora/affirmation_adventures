@@ -45,10 +45,10 @@ public class GameScreen implements Screen {
     final float WINDOW_DISPLAY_TIME = 3f;
 
     // Variables for random affirmations.
-    private BitmapFont font;
-    private String[] affirmations;
+    private final BitmapFont font;
+    private final String[] affirmations;
     private String currentAffirmation;
-    private Random random;
+    private final Random random;
     /**
      * Constructs a new GameScreen.
      *

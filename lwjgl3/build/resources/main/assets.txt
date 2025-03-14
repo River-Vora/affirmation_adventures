@@ -18,6 +18,7 @@ chaos_2.png
 chaos_3.png
 default-font.fnt
 default-font.png
+font.fnt
 instructionsButton.jpg
 playbutton.png
 playbuttonpressed.png

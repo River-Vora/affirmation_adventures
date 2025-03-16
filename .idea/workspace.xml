@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d558aa5-20dd-4bbc-a07b-0e0ef38e67f4" name="Changes" comment="update issue templates.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4d558aa5-20dd-4bbc-a07b-0e0ef38e67f4" name="Changes" comment="automatic update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -393,7 +391,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741983485879</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="automatic update">
+      <option name="closed" value="true" />
+      <created>1742076326138</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1742076326138</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -419,6 +425,7 @@
     <MESSAGE value="commit" />
     <MESSAGE value="update" />
     <MESSAGE value="update issue templates." />
-    <option name="LAST_COMMIT_MESSAGE" value="update issue templates." />
+    <MESSAGE value="automatic update" />
+    <option name="LAST_COMMIT_MESSAGE" value="automatic update" />
   </component>
 </project>

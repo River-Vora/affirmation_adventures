@@ -1,0 +1,68 @@
+name: Misc.
+description: Any issue that doesn't belong in one of the other templates
+labels: [ "" ]
+assignees: [ ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please follow the instructions below.
+        We try to stay as productive as possible on GitHub, and we'd like to make sure that we can help you as efficiently as possible.
+        If you think your issue could fall under one of the other categories, then do not fill this out.
+
+       Provide a brief summary of the issue in the title above
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current Behavior
+      description: Tell us what happens
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: Tell us what should happen
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context (optional)
+      description: |
+        How has this issue affected you? What are you trying to accomplish?
+        Providing context helps us come up with a solution that is most useful in the real world
+    validations:
+      required: false
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Self-contained Reproducer Project
+      description: |
+        Provide a [minimal, self-contained example](https://en.wikipedia.org/wiki/Minimal_reproducible_example) project demonstrating the problem as a GitHub repository or an attached archive.
+        Try to describe the steps to reproduce the issue in a way that is easy to reproduce.
+    validations:
+      required: true
+  - type: input
+    id: gradle-version
+    attributes:
+      label: Gradle version
+      description: What version of Gradle are you running?
+    validations:
+      required: true
+  - type: input
+    id: build-scan-url
+    attributes:
+      label: Build scan URL (optional)
+      description: |
+        You can run your build command with `--scan` to publish a Build Scan to [scans.gradle.com](https://scans.gradle.com/).
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: Your Environment (optional)
+      description: |
+        Include as many relevant details about the environment you experienced the bug in
+    validations:
+      required: false

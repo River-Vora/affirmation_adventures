@@ -4,17 +4,64 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d558aa5-20dd-4bbc-a07b-0e0ef38e67f4" name="Changes" comment="Update construo version and automatic update.">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="4d558aa5-20dd-4bbc-a07b-0e0ef38e67f4" name="Changes" comment="Add copyright headers to multiple files">
+      <change afterPath="$PROJECT_DIR$/LICENSE_HEADER.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/contributor _bug_report.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/contributor _bug_report.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/contributor_documentation.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/contributor_documentation.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/contributor_feature_request.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/contributor_feature_request.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/misc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/misc.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/check-signoff.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/check-signoff.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lwjgl3/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lwjgl3/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dungeon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Dungeon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Dungeon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Dungeon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/GameOverScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/GameOverScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/GameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/MainMenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/MainMenuScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/OptionsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/OptionsScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/affirmation_adventures.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/affirmation_adventures.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Info.plist.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/build/classes/java/main/com/badlogic/affirmation_adventures/ios/IOSLauncher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/build/dependencyUpdates/report.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/build/libs/ios-$projectVersion.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Base.lproj/LaunchScreen.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/app-store-icon-1024@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-app-icon-76@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-app-icon-76@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-notifications-icon-20@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-notifications-icon-20@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-pro-app-icon-83.5@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-settings-icon-29@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-settings-icon-29@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-spotlight-icon-40@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/ipad-spotlight-icon-40@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-app-icon-60@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-app-icon-60@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-notification-icon-20@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-notification-icon-20@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-icon-40@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-icon-40@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-settings-icon-29@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/AppIcon.appiconset/iphone-spotlight-settings-icon-29@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/Logo.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/Logo.imageset/libgdx@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/Logo.imageset/libgdx@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/Media.xcassets/Logo.imageset/libgdx@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/data/PrivacyInfo.xcprivacy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/robovm.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/robovm.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/src/main/java/com/badlogic/affirmation_adventures/ios/IOSLauncher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl3/src/main/java/com/badlogic/affirmation_adventures/lwjgl3/Lwjgl3Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/lwjgl3/src/main/java/com/badlogic/affirmation_adventures/lwjgl3/Lwjgl3Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +151,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+    "settings.editor.selected.configurable": "preferences.externalResources"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -467,7 +514,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742592503668</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Update construo version and automatic update.">
+      <option name="closed" value="true" />
+      <created>1742593310234</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1742593310234</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -496,6 +551,7 @@
     <MESSAGE value="automatic update" />
     <MESSAGE value="Add plugin com.github.ben-manes:gradle-version-plugin:0.52.0 to check for updates to dependencies and plugins." />
     <MESSAGE value="Update construo version and automatic update." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update construo version and automatic update." />
+    <MESSAGE value="Add copyright headers to multiple files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add copyright headers to multiple files" />
   </component>
 </project>

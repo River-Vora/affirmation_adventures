@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d558aa5-20dd-4bbc-a07b-0e0ef38e67f4" name="Changes" comment="Add license headers to configuration-cache-report.html and overview-tree.html">
+    <list default="true" id="4d558aa5-20dd-4bbc-a07b-0e0ef38e67f4" name="Changes" comment="Update .gitignore and workspace.xml to include additional ignored files and modify change list comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,27 +60,27 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "history": [
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
     {
-      "state": "OPEN"
+      &quot;state&quot;: &quot;OPEN&quot;
     }
   ],
-  "lastFilter": {
-    "state": "OPEN"
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
-  <component name="GitHubPullRequestState"><![CDATA[{
-  "prStates": [
+}</component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: [
     {
-      "id": {
-        "id": "PR_kwDONnPiCs6OuV7q",
-        "number": 22
+      &quot;id&quot;: {
+        &quot;id&quot;: &quot;PR_kwDONnPiCs6OuV7q&quot;,
+        &quot;number&quot;: 22
       },
-      "lastSeen": 1743191582542
+      &quot;lastSeen&quot;: 1743191582542
     }
   ]
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;git@github.com:River-Vora/affirmation_adventures.git&quot;,
@@ -250,8 +250,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Gradle.affirmation_adventures [dependencyUpdates]" />
       <item itemvalue="Gradle.affirmation_adventures [build]" />
+      <item itemvalue="Gradle.affirmation_adventures [dependencyUpdates]" />
       <item itemvalue="Gradle.affirmation_adventures [packageMacM1]" />
       <item itemvalue="Gradle.affirmation_adventures [run]" />
     </list>
@@ -497,7 +497,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743026929926</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Update .gitignore and workspace.xml to include additional ignored files and modify change list comments">
+      <option name="closed" value="true" />
+      <created>1743192543847</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1743192543847</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -529,6 +537,7 @@
     <MESSAGE value="Add copyright headers to multiple files" />
     <MESSAGE value="Delete ios module and add license headers to files" />
     <MESSAGE value="Add license headers to configuration-cache-report.html and overview-tree.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add license headers to configuration-cache-report.html and overview-tree.html" />
+    <MESSAGE value="Update .gitignore and workspace.xml to include additional ignored files and modify change list comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update .gitignore and workspace.xml to include additional ignored files and modify change list comments" />
   </component>
 </project>

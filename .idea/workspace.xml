@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d558aa5-20dd-4bbc-a07b-0e0ef38e67f4" name="Changes" comment="Update .gitignore and workspace.xml to include additional ignored files and modify change list comments" />
+    <list default="true" id="4d558aa5-20dd-4bbc-a07b-0e0ef38e67f4" name="Changes" comment="Update .gitignore and workspace.xml to include additional ignored files and modify change list comments">
+      <change afterPath="$PROJECT_DIR$/assets/BattleTheme.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/slider-background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/slider-knob.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lwjgl3/build/resources/main/BattleTheme.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lwjgl3/build/resources/main/default-font.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/badlogic/affirmation_adventures/GameScreen.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/badlogic/affirmation_adventures/GameScreen.class.uniqueId0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/badlogic/affirmation_adventures/MainMenuScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/badlogic/affirmation_adventures/MainMenuScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/classes/java/main/com/badlogic/affirmation_adventures/MainMenuScreen.class.uniqueId1" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/classes/java/main/com/badlogic/affirmation_adventures/MainMenuScreen.class.uniqueId1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/libs/core-$projectVersion.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/libs/core-$projectVersion.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/GameScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/GameScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/MainMenuScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/MainMenuScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/OptionsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/badlogic/affirmation_adventures/OptionsScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl3/build/classes/java/main/com/badlogic/affirmation_adventures/lwjgl3/Lwjgl3Launcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/lwjgl3/build/classes/java/main/com/badlogic/affirmation_adventures/lwjgl3/Lwjgl3Launcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl3/build/resources/main/assets.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lwjgl3/build/resources/main/assets.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lwjgl3/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/lwjgl3/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,20 +116,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.affirmation_adventures [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.affirmation_adventures [dependencyUpdates].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.affirmation_adventures [packageMacM1].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.affirmation_adventures [run].executor&quot;: &quot;Run&quot;,
-    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.externalResources&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.affirmation_adventures [build].executor": "Run",
+    "Gradle.affirmation_adventures [dependencyUpdates].executor": "Run",
+    "Gradle.affirmation_adventures [packageMacM1].executor": "Run",
+    "Gradle.affirmation_adventures [run].executor": "Run",
+    "OverrideImplement.generate.javadoc": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Merging main",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "preferences.externalResources"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.badlogic.affirmation_adventures" />

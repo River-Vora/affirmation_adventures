@@ -1,4 +1,4 @@
-.gitkeep
+BattleTheme.mp3
 Dungeon.png
 Dungeon.tmx
 Dungeon.tsx
@@ -16,9 +16,16 @@ chaos_0.png
 chaos_1.png
 chaos_2.png
 chaos_3.png
+default-font.fnt
+default-font.png
+font.fnt
 instructionsButton.jpg
 playbutton.png
 playbuttonpressed.png
 player.png
 popup_imageEdited.png
 popup_imageOriginal.png
+slider-background.png
+slider-knob.png
+uiskin.atlas
+uiskin.json

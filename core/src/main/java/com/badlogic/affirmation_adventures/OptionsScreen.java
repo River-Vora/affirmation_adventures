@@ -24,14 +24,15 @@ import com.badlogic.gdx.Screen;
 
 public class OptionsScreen implements Screen {
     final affirmation_adventures game;
-
     /**
      * Constructs a new OptionsScreen.
-     * @param game the main game instance
+     *
+     * @param game  the main game instance
      */
 
     public OptionsScreen(final affirmation_adventures game) {
         this.game = game;
+
     }
 
     /**
@@ -50,7 +51,6 @@ public class OptionsScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
     }
 
     /**
@@ -95,6 +95,5 @@ public class OptionsScreen implements Screen {
      */
     @Override
     public void dispose() {
-
     }
 }

@@ -1,4 +1,5 @@
 .gitkeep
+BattleTheme.mp3
 Dungeon.png
 Dungeon.tmx
 Dungeon.tsx
@@ -22,3 +23,5 @@ playbuttonpressed.png
 player.png
 popup_imageEdited.png
 popup_imageOriginal.png
+slider-background.png
+slider-knob.png

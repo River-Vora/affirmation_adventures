@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: Bug Report
-description: Create a report to help us improve
-labels: [ "a:bug" ]
+name: Misc.
+description: Any issue that does not belong in one of the other templates
+labels: [ "" ]
 assignees: [ ]
 body:
   - type: markdown
@@ -22,8 +22,7 @@ body:
       value: |
         Please follow the instructions below.
         We try to stay as productive as possible on GitHub, and we'd like to make sure that we can help you as efficiently as possible.
-        If you think you have found a bug, please fill out the template below.
-        If you're not sure if it is a bug, please do not fill out this template; use the one for miscellaneous issues instead.
+        If you think your issue could fall under one of the other categories, then do not fill this out.
 
         Provide a brief summary of the issue in the title above
   - type: textarea

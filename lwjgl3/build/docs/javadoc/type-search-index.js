@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"com.badlogic.affirmation_adventures.lwjgl3","l":"Lwjgl3Launcher"},{"p":"com.badlogic.affirmation_adventures.lwjgl3","l":"StartupHelper"}];updateSearchResults();

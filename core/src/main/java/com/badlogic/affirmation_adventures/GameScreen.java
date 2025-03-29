@@ -36,17 +36,18 @@ public class GameScreen implements Screen {
     public OrthogonalTiledMapRenderer mapRenderer;
     public OrthographicCamera camera = new OrthographicCamera();
     public TiledMap tiledMap;
-    Texture WindowTexture;
-    Sprite Windowsprite;
+    private Texture[] windowTextures;
+    private Sprite[] windowSprites;
+    Sprite currentWindowSprite;
     public Rectangle playerBounds;
     Music music;
     float affirmationCounter;
     float windowTimer;
     final float WINDOW_DISPLAY_TIME = 3f;
+    private int lastWindowSpriteIndex = -1;
 
     // Variables for random affirmations.
     private final BitmapFont font;
-    private final String[] affirmations;
     private String currentAffirmation;
     private final Random random;
     /**
@@ -74,28 +75,23 @@ public class GameScreen implements Screen {
             playerBounds = new Rectangle(playerSprite.getX(), playerSprite.getY(), playerSprite.getWidth(), playerSprite.getHeight());
         }
 
+        windowTextures = new Texture[] {
+            new Texture("youAreAwesome.png"),
+            new Texture("youAreBold.png"),
+            new Texture("youAreEnough.png"),
+            new Texture("youAreHardworking.png")
+        };
         // Initialization of the fonts.
         font = new BitmapFont();
         font.getData().setScale(0.1f);
         // Set linear filtering for the font texture
         font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
-        // Strings for the random affirmations.
-        affirmations = new String[] {
-            "Y o u  a r e  h a r d w o rk i n g .",
-            "Y o u  a r e  e n o u g h .",
-            "Y o u  a r e  a w e s o m e.",
-            "Y o u  a r e  w o r t h y .",
-            "Y o u  a r e  a m a z i n g .",
-            "Y o u  a r e  l o v e d .",
-            "Y o u  a r e  b o l d .",
-            "Y o u  a r e  b r a v e .",
-            "Y o u  a r e  s t r o n g .",
-            "Y o u  a r e  d e t e r m i n e d .",
-            "Y o u  a r e  r e s i l i e n t .",
-            "Y o u  a r e  i n t e l l i g e n t .",
-            "Y o u  a r e  s u c c e s s f u l ."
-        };
+        windowSprites = new Sprite[windowTextures.length];
+        for (int i = 0; i < windowTextures.length; i++) {
+            windowSprites[i] = new Sprite(windowTextures[i]);
+            windowSprites[i].setSize(15, 15);
+        }
 
         random = new Random();
 
@@ -116,9 +112,6 @@ public class GameScreen implements Screen {
             Gdx.app.error("GameScreen", "Exception loading map", e);
         }
 
-        WindowTexture = new Texture("popup_imageOriginal.png");
-        Windowsprite = new Sprite(WindowTexture);
-        Windowsprite.setSize(15, 15);
 
         font.getData().setScale(0.1f);
 
@@ -153,8 +146,13 @@ public class GameScreen implements Screen {
         affirmationCounter += delta;
         if (!showWindowSprite && affirmationCounter >= 10f) {
             showWindowSprite = true;
-            currentAffirmation = affirmations[random.nextInt(affirmations.length)];
-            Windowsprite.setPosition(playerSprite.getX(), playerSprite.getY());
+            int newIndex;
+            do {
+                newIndex = random.nextInt(windowSprites.length);
+            } while (newIndex == lastWindowSpriteIndex);
+            currentWindowSprite = windowSprites[newIndex];
+            lastWindowSpriteIndex = newIndex;
+            currentWindowSprite.setPosition(playerSprite.getX(), playerSprite.getY());
             windowTimer = WINDOW_DISPLAY_TIME;
         }
 
@@ -193,9 +191,8 @@ public class GameScreen implements Screen {
             }
             // Draws the window sprite if it is visible.
             if (showWindowSprite) {
-                Windowsprite.draw(game.batch);
+                currentWindowSprite.draw(game.batch);
                 font.setColor(Color.BLACK);
-                font.draw(game.batch, currentAffirmation, playerSprite.getX() + 1, playerSprite.getY() + 8);
             }
 
             game.batch.end();
@@ -320,7 +317,7 @@ public class GameScreen implements Screen {
             // Convert the touch coordinates to world coordinates.
             Vector3 touchPos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
             camera.unproject(touchPos);
-            if (Windowsprite.getBoundingRectangle().contains(touchPos.x, touchPos.y)) {
+            if (currentWindowSprite.getBoundingRectangle().contains(touchPos.x, touchPos.y)) {
                 showWindowSprite = false;
                 affirmationCounter = 0;
             }
@@ -365,8 +362,8 @@ public class GameScreen implements Screen {
         if (tiledMap != null) {
             tiledMap.dispose();
         }
-        if (WindowTexture != null) {
-            WindowTexture.dispose();
+        for (Texture texture : windowTextures) {
+            texture.dispose();
         }
     }
 }

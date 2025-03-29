@@ -16,9 +16,7 @@ chaos_0.png
 chaos_1.png
 chaos_2.png
 chaos_3.png
-default-font.fnt
-default-font.png
-font.fnt
+font.ttf
 instructionsButton.jpg
 playbutton.png
 playbuttonpressed.png
@@ -27,5 +25,7 @@ popup_imageEdited.png
 popup_imageOriginal.png
 slider-background.png
 slider-knob.png
-uiskin.atlas
-uiskin.json
+youAreAwesome.png
+youAreBold.png
+youAreEnough.png
+youAreHardworking.png

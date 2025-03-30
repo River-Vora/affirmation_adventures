@@ -116,7 +116,12 @@ public class GameScreen implements Screen {
         random = new Random();
 
         try {
+            Gdx.app.log("GameScreen", "Attempting to load map: Dungeon.tmx");
+            long startTime = System.currentTimeMillis();
             tiledMap = new TmxMapLoader().load("Dungeon.tmx");
+            long endTime = System.currentTimeMillis();
+            Gdx.app.log("GameScreen", "Map loading time: " + (endTime - startTime) + "ms");
+
             if (tiledMap == null) {
                 Gdx.app.error("GameScreen", "Failed to load map: Dungeon.tmx");
             } else {
@@ -130,6 +135,12 @@ public class GameScreen implements Screen {
             }
         } catch (Exception e) {
             Gdx.app.error("GameScreen", "Exception loading map", e);
+            Gdx.app.log("GameScreen", "Exception message: " + e.getMessage());
+            Gdx.app.log("GameScreen", "Exception cause: " + e.getCause());
+            Gdx.app.log("GameScreen", "Exception class: " + e.getClass().getName());
+            for (StackTraceElement element : e.getStackTrace()) {
+                Gdx.app.log("GameScreen", "at " + element.toString());
+            }
         }
 
         WindowTexture = new Texture("popup_imageOriginal.png");

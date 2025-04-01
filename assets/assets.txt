@@ -5,33 +5,13 @@ Dungeon.tmx
 Dungeon.tsx
 DungeonStarter.png
 Menu_Backdrop.png
-<<<<<<< HEAD:lwjgl3/build/resources/main/assets.txt
 font.ttf
 instructions.png
-=======
-NewButton.png
-NewButtonPressed.png
-OptionsButton.png
-OptionsButtonPressed.png
-Screenshot.png
-chaos001.png
-chaos_0.png
-chaos_1.png
-chaos_2.png
-chaos_3.png
-instructionsButton.jpg
->>>>>>> b75f4fc5ab48e27306bdb4f35e819325a0831ff6:assets/assets.txt
 playbutton.png
 player.png
 popup_imageEdited.png
-<<<<<<< HEAD:lwjgl3/build/resources/main/assets.txt
 volume-button.png
 youAreAwesome.png
 youAreBold.png
 youAreEnough.png
 youAreHardworking.png
-=======
-popup_imageOriginal.png
-slider-background.png
-slider-knob.png
->>>>>>> b75f4fc5ab48e27306bdb4f35e819325a0831ff6:assets/assets.txt

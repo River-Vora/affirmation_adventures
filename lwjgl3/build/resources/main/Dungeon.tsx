@@ -84,6 +84,7 @@
  <tile id="32">
   <properties>
    <property name="collidable" type="bool" value="true"/>
+   <property name="stone" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="33"/>

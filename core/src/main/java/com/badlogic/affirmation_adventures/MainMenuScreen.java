@@ -5,7 +5,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.math.Rectangle;
 
 /**
  * First screen of the application. Displayed after the application is created.
@@ -14,9 +16,12 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class MainMenuScreen implements Screen {
 
     Texture playButton;
-    Texture playButtonPressed;
     Texture menuBackground;
     Music music;
+    Texture instructionsTexture;
+    boolean showInstructions = true;
+    Rectangle playButtonBounds;
+
 
     final affirmation_adventures game;
 
@@ -28,11 +33,14 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(final affirmation_adventures game) {
         this.game = game;
 
+        instructionsTexture = new Texture("instructions.png");
         playButton = new Texture("playbutton.png");
-        playButtonPressed = new Texture("playbuttonpressed.png");
         menuBackground = new Texture("Menu_Backdrop.png");
         menuBackground.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         music = Gdx.audio.newMusic(Gdx.files.internal("BattleTheme.mp3"));
+
+        playButtonBounds = new Rectangle();
+
     }
     @Override
     public void show() {
@@ -63,22 +71,35 @@ public class MainMenuScreen implements Screen {
 
         float playButtonX = (worldWidth - playButton.getWidth()) / 2;
         float playButtonY = (worldHeight - playButton.getHeight()) / 2;
+
+        playButtonBounds.set(playButtonX, playButtonY, playButton.getWidth(), playButton.getHeight());
+
         game.batch.draw(playButton, playButtonX, playButtonY);
 
+        float instructionsButtonX = (worldWidth - instructionsTexture.getWidth()) / 2;
+        float instructionsButtonY = (worldHeight - instructionsTexture.getHeight()) / 2;
 
+        /* if (showInstructions) {
+            game.batch.draw(instructionsTexture, instructionsButtonX, instructionsButtonY);
+        }
+
+
+         */
         game.batch.end();
 
         if (Gdx.input.isTouched()) {
-            float touchX = Gdx.input.getX();
-            float touchY = Gdx.input.getY();
+            Vector3 touchPos = new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0);
+            game.viewport.getCamera().unproject(touchPos);
+            float touchX = touchPos.x;
+            float touchY = touchPos.y;
 
             touchY = worldHeight - touchY;
 
-            if (touchX >= playButtonX && touchX <= playButtonX + playButton.getWidth() &&
-                touchY >= playButtonY && touchY <= playButtonY + playButton.getHeight()) {
+            if (playButtonBounds.contains(touchX, touchY)) {
                 game.setScreen(new GameScreen(game));
                 dispose();
             }
+
         }
     }
 
@@ -106,10 +127,8 @@ public class MainMenuScreen implements Screen {
     @Override
     public void dispose() {
         playButton.dispose();
-        playButtonPressed.dispose();
         menuBackground.dispose();
         playButton.dispose();
-        playButtonPressed.dispose();
         menuBackground.dispose();
     }
 }

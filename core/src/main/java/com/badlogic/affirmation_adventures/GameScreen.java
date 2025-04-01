@@ -38,6 +38,8 @@ public class GameScreen implements Screen {
     public TiledMap tiledMap;
     private Texture[] windowTextures;
     private Sprite[] windowSprites;
+    public int health = 1000;
+    public boolean tripping = false;
     Sprite currentWindowSprite;
     public Rectangle playerBounds;
     Music music;
@@ -45,11 +47,13 @@ public class GameScreen implements Screen {
     float windowTimer;
     final float WINDOW_DISPLAY_TIME = 3f;
     private int lastWindowSpriteIndex = -1;
+    public int gameTimer = 0;
+    public int gameTime = 0;
 
     // Variables for random affirmations.
     private final BitmapFont font;
-    private String currentAffirmation;
     private final Random random;
+
     /**
      * Constructs a new GameScreen.
      *
@@ -163,6 +167,14 @@ public class GameScreen implements Screen {
                 affirmationCounter = 0;
             }
         }
+
+        // Check if health is zero or below
+        if (health <= 0) {
+            game.setScreen(new GameOverScreenLost(game));
+        }
+        if (gameTimer >= 2000) {
+            game.setScreen(new GameOverScreenWon(game));
+        }
     }
 
     /**
@@ -194,6 +206,9 @@ public class GameScreen implements Screen {
                 currentWindowSprite.draw(game.batch);
                 font.setColor(Color.BLACK);
             }
+            font.setColor(Color.WHITE);
+            font.draw(game.batch, "Health: " + health, camera.position.x - camera.viewportWidth / 2 + 10, camera.position.y + camera.viewportHeight / 2 - 10);
+            font.draw(game.batch, "Time: " + gameTime, camera.position.x - camera.viewportWidth / 2 + 10, camera.position.y + camera.viewportHeight / 2 - 30);
 
             game.batch.end();
         }
@@ -278,6 +293,7 @@ public class GameScreen implements Screen {
                                     if (tile.getProperties().containsKey("collidable") &&
                                         Boolean.TRUE.equals(tile.getProperties().get("collidable"))) {
                                         collision = true;
+                                        tripping = true;
                                         Gdx.app.log("Collision", "Collision detected with tile at (" + col + ", " + row + ")");
                                         break;
                                     }
@@ -286,17 +302,6 @@ public class GameScreen implements Screen {
                                     int tileId = tile.getId();
                                     Gdx.app.log("Tile ID", "Tile at (" + col + ", " + row + ") has ID: " + tileId);
 
-                                    // Check for specific tile ID
-                                    if (tileId == 34) { // Replace 7798 with the desired tile ID
-                                        collision = true;
-                                        Gdx.app.log("Treasure", "Treasure with tile ID: " + tileId);
-                                        break;
-                                    }
-                                    if (tileId == 35) {
-                                        collision = true;
-                                        Gdx.app.log("Treasure", "Treasure with tile ID: " + tileId);
-                                        break;
-                                    }
                                 } else {
                                     Gdx.app.log("Tile", "Tile in cell (" + col + ", " + row + ") is null");
                                 }
@@ -309,7 +314,17 @@ public class GameScreen implements Screen {
                 if (collision) {
                     playerSprite.setPosition(oldX, oldY);
                     playerBounds.setPosition(oldX, oldY);
+                    if (tripping) {
+                        health -= 2;
+                        tripping = false;
+                        Gdx.app.log("Health", "Player health decreased to: " + health);
+                    }
                 }
+                if (!collision) {
+                    gameTimer = gameTimer + 1;
+                }
+
+                gameTime = gameTime + 1;
             }
         }
         // Checking if the window was clicked.
@@ -328,10 +343,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        if (camera != null) {
-            camera.setToOrtho(false, 100, 100);
-            camera.update();
-        }
+        game.viewport.update(width, height, true);
 
     }
 
@@ -367,3 +379,4 @@ public class GameScreen implements Screen {
         }
     }
 }
+

@@ -17,12 +17,14 @@ buildscript {
     "com.badlogicgames.gdx:gdx-freetype-platform:1.12.1:natives-desktop"
     "com.badlogicgames.gdx:gdx-tiled-preprocessor:1.12.1"
     "com.badlogicgames.gdx:gdx-tiled-preprocessor-platform:1.12.1:natives-desktop"
+    classpath "com.github.ben-manes:gradle-versions-plugin:0.52.0"
   }
 }
 
 allprojects {
   apply plugin: 'eclipse'
   apply plugin: 'idea'
+  apply plugin: "com.github.ben-manes.versions"
 
   // This allows you to "Build and run using IntelliJ IDEA", an option in IDEA's Settings.
   idea {

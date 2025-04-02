@@ -10,21 +10,19 @@ buildscript {
   }
   dependencies {
     // Include your dependencies here
-    "com.badlogicgames.gdx:gdx:1.12.1"
-    "com.badlogicgames.gdx:gdx-backend-lwjgl:1.12.1"
-    "com.badlogicgames.gdx:gdx-platform:1.12.1:natives-desktop"
-    "com.badlogicgames.gdx:gdx-freetype:1.12.1"
-    "com.badlogicgames.gdx:gdx-freetype-platform:1.12.1:natives-desktop"
-    "com.badlogicgames.gdx:gdx-tiled-preprocessor:1.12.1"
-    "com.badlogicgames.gdx:gdx-tiled-preprocessor-platform:1.12.1:natives-desktop"
-    classpath "com.github.ben-manes:gradle-versions-plugin:0.52.0"
+    file "lib/gdx-1.13.1.jar"
+    file "lib/gdx-backend-lwjgl-1.13.1.jar"
+    file "lib/gdx-platform-1.13.1-natives-desktop.jar"
+    file "lib/gdx-freetype-1.13.1.jar"
+    file "lib/gdx-freetype-platform-1.13.1-natives-desktop.jar"
+    "com.badlogicgames.gdx:gdx-tiled-preprocessor:1.13.1"
+    "com.badlogicgames.gdx:gdx-tiled-preprocessor-platform:1.13.1:natives-desktop"
   }
 }
 
 allprojects {
   apply plugin: 'eclipse'
   apply plugin: 'idea'
-  apply plugin: "com.github.ben-manes.versions"
 
   // This allows you to "Build and run using IntelliJ IDEA", an option in IDEA's Settings.
   idea {

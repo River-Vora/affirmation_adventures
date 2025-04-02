@@ -16,6 +16,7 @@
 
 package com.badlogic.affirmation_adventures;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -39,10 +40,10 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.util.Random;
+
 /**
  * Represents the game screen where the main gameplay occurs.
  */
-
 public class GameScreen implements Screen {
     final affirmation_adventures game;
 
@@ -54,6 +55,8 @@ public class GameScreen implements Screen {
     public TiledMap tiledMap;
     private Texture[] windowTextures;
     private Sprite[] windowSprites;
+    public int health = 1000;
+    public boolean tripping = false;
     Sprite currentWindowSprite;
     public Rectangle playerBounds;
     Music music;
@@ -61,17 +64,18 @@ public class GameScreen implements Screen {
     float windowTimer;
     final float WINDOW_DISPLAY_TIME = 3f;
     private int lastWindowSpriteIndex = -1;
+    public int gameTimer = 0;
+    public int gameTime = 0;
 
     // Variables for random affirmations.
     private final BitmapFont font;
-    private String currentAffirmation;
     private final Random random;
+
     /**
      * Constructs a new GameScreen.
      *
      * @param game the main game instance
      */
-
     public GameScreen(final affirmation_adventures game) {
         this.game = game;
 
@@ -156,11 +160,20 @@ public class GameScreen implements Screen {
         }
     }
 
+    /**
+     * Called when this screen becomes the current screen for a {@link Game}.
+     */
     @Override
     public void show() {
         // Prepare your screen here.
         music.play();
     }
+
+    /**
+     * Called when the screen should render itself.
+     *
+     * @param delta The time in seconds since the last render.
+     */
     @Override
     public void render(float delta) {
         input();
@@ -168,6 +181,11 @@ public class GameScreen implements Screen {
         logic(delta);
     }
 
+    /**
+     * Contains the game logic.
+     *
+     * @param delta The time in seconds since the last render.
+     */
     private void logic(float delta) {
         // Affirmation window counter.
         affirmationCounter += delta;
@@ -190,12 +208,19 @@ public class GameScreen implements Screen {
                 affirmationCounter = 0;
             }
         }
+
+        // Check if health is zero or below
+        if (health <= 0) {
+            game.setScreen(new GameOverScreenLost(game));
+        }
+        if (gameTimer >= 2000) {
+            game.setScreen(new GameOverScreenWon(game));
+        }
     }
 
     /**
      * Handles the drawing of the game screen.
      */
-
     public void draw() {
         ScreenUtils.clear(Color.BLACK);
         if (camera != null && playerSprite != null) {
@@ -221,6 +246,9 @@ public class GameScreen implements Screen {
                 currentWindowSprite.draw(game.batch);
                 font.setColor(Color.BLACK);
             }
+            font.setColor(Color.WHITE);
+            font.draw(game.batch, "Health: " + health, camera.position.x - camera.viewportWidth / 2 + 10, camera.position.y + camera.viewportHeight / 2 - 10);
+            font.draw(game.batch, "Time: " + gameTime, camera.position.x - camera.viewportWidth / 2 + 10, camera.position.y + camera.viewportHeight / 2 - 30);
 
             game.batch.end();
         }
@@ -229,7 +257,6 @@ public class GameScreen implements Screen {
     /**
      * Handles the user input.
      */
-
     public void input() {
 
         if (!showWindowSprite) {
@@ -305,6 +332,7 @@ public class GameScreen implements Screen {
                                     if (tile.getProperties().containsKey("collidable") &&
                                         Boolean.TRUE.equals(tile.getProperties().get("collidable"))) {
                                         collision = true;
+                                        tripping = true;
                                         Gdx.app.log("Collision", "Collision detected with tile at (" + col + ", " + row + ")");
                                         break;
                                     }
@@ -313,17 +341,6 @@ public class GameScreen implements Screen {
                                     int tileId = tile.getId();
                                     Gdx.app.log("Tile ID", "Tile at (" + col + ", " + row + ") has ID: " + tileId);
 
-                                    // Check for specific tile ID
-                                    if (tileId == 34) { // Replace 7798 with the desired tile ID
-                                        collision = true;
-                                        Gdx.app.log("Treasure", "Treasure with tile ID: " + tileId);
-                                        break;
-                                    }
-                                    if (tileId == 35) {
-                                        collision = true;
-                                        Gdx.app.log("Treasure", "Treasure with tile ID: " + tileId);
-                                        break;
-                                    }
                                 } else {
                                     Gdx.app.log("Tile", "Tile in cell (" + col + ", " + row + ") is null");
                                 }
@@ -336,7 +353,17 @@ public class GameScreen implements Screen {
                 if (collision) {
                     playerSprite.setPosition(oldX, oldY);
                     playerBounds.setPosition(oldX, oldY);
+                    if (tripping) {
+                        health -= 2;
+                        tripping = false;
+                        Gdx.app.log("Health", "Player health decreased to: " + health);
+                    }
                 }
+                if (!collision) {
+                    gameTimer = gameTimer + 1;
+                }
+
+                gameTime = gameTime + 1;
             }
         }
         // Checking if the window was clicked.
@@ -351,32 +378,45 @@ public class GameScreen implements Screen {
         }
     }
 
-
-
+    /**
+     * Called when the screen is resized.
+     *
+     * @param width  the new width
+     * @param height the new height
+     */
     @Override
     public void resize(int width, int height) {
-        if (camera != null) {
-            camera.setToOrtho(false, 100, 100);
-            camera.update();
-        }
+        game.viewport.update(width, height, true);
 
     }
 
+    /**
+     * Called when the game is paused.
+     */
     @Override
     public void pause() {
 
     }
 
+    /**
+     * Called when the game is resumed from a paused state.
+     */
     @Override
     public void resume() {
 
     }
 
+    /**
+     * Called when this screen is no longer the current screen for a {@link Game}.
+     */
     @Override
     public void hide() {
 
     }
 
+    /**
+     * Called when this screen should release all resources.
+     */
     @Override
     public void dispose() {
         // Disposing of resources when the screen is no longer needed.

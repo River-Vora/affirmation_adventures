@@ -213,7 +213,7 @@ public class GameScreen implements Screen {
         if (health <= 0) {
             game.setScreen(new GameOverScreenLost(game));
         }
-        if (gameTimer >= 2000) {
+        if (gameTimer >= 10000) {
             game.setScreen(new GameOverScreenWon(game));
         }
     }

@@ -1,23 +1,40 @@
 package com.badlogic.affirmation_adventures;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+/**
+ * Screen displayed when the player loses the game.
+ */
 public class GameOverScreenLost implements Screen {
     final affirmation_adventures game;
 
+    /**
+     * Constructs a new GameOverScreenLost.
+     *
+     * @param game the main game instance
+     */
     public GameOverScreenLost(final affirmation_adventures game) {
         this.game = game;
     }
 
+    /**
+     * Called when this screen becomes the current screen for a {@link Game}.
+     */
     @Override
     public void show() {
 
     }
 
+    /**
+     * Called when the screen should render itself.
+     *
+     * @param delta The time in seconds since the last render.
+     */
     @Override
     public void render(float delta) {
         ScreenUtils.clear(Color.BLACK);
@@ -41,26 +58,44 @@ public class GameOverScreenLost implements Screen {
         }
     }
 
+    /**
+     * Called when the screen is resized.
+     *
+     * @param width  the new width
+     * @param height the new height
+     */
     @Override
     public void resize(int width, int height) {
         game.viewport.update(width, height, true);
     }
 
+    /**
+     * Called when the game is paused.
+     */
     @Override
     public void pause() {
 
     }
 
+    /**
+     * Called when the game is resumed from a paused state.
+     */
     @Override
     public void resume() {
 
     }
 
+    /**
+     * Called when this screen is no longer the current screen for a {@link Game}.
+     */
     @Override
     public void hide() {
 
     }
 
+    /**
+     * Called when this screen should release all resources.
+     */
     @Override
     public void dispose() {
 

@@ -16,6 +16,7 @@
 
 package com.badlogic.affirmation_adventures;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -39,10 +40,10 @@ import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.util.Random;
+
 /**
  * Represents the game screen where the main gameplay occurs.
  */
-
 public class GameScreen implements Screen {
     final affirmation_adventures game;
 
@@ -75,7 +76,6 @@ public class GameScreen implements Screen {
      *
      * @param game the main game instance
      */
-
     public GameScreen(final affirmation_adventures game) {
         this.game = game;
 
@@ -149,11 +149,20 @@ public class GameScreen implements Screen {
         }
     }
 
+    /**
+     * Called when this screen becomes the current screen for a {@link Game}.
+     */
     @Override
     public void show() {
         // Prepare your screen here.
         music.play();
     }
+
+    /**
+     * Called when the screen should render itself.
+     *
+     * @param delta The time in seconds since the last render.
+     */
     @Override
     public void render(float delta) {
         input();
@@ -161,6 +170,11 @@ public class GameScreen implements Screen {
         logic(delta);
     }
 
+    /**
+     * Contains the game logic.
+     *
+     * @param delta The time in seconds since the last render.
+     */
     private void logic(float delta) {
         // Affirmation window counter.
         affirmationCounter += delta;
@@ -196,7 +210,6 @@ public class GameScreen implements Screen {
     /**
      * Handles the drawing of the game screen.
      */
-
     public void draw() {
         ScreenUtils.clear(Color.BLACK);
         if (camera != null && playerSprite != null) {
@@ -233,7 +246,6 @@ public class GameScreen implements Screen {
     /**
      * Handles the user input.
      */
-
     public void input() {
 
         if (!showWindowSprite) {
@@ -355,29 +367,45 @@ public class GameScreen implements Screen {
         }
     }
 
-
-
+    /**
+     * Called when the screen is resized.
+     *
+     * @param width  the new width
+     * @param height the new height
+     */
     @Override
     public void resize(int width, int height) {
         game.viewport.update(width, height, true);
 
     }
 
+    /**
+     * Called when the game is paused.
+     */
     @Override
     public void pause() {
 
     }
 
+    /**
+     * Called when the game is resumed from a paused state.
+     */
     @Override
     public void resume() {
 
     }
 
+    /**
+     * Called when this screen is no longer the current screen for a {@link Game}.
+     */
     @Override
     public void hide() {
 
     }
 
+    /**
+     * Called when this screen should release all resources.
+     */
     @Override
     public void dispose() {
         // Disposing of resources when the screen is no longer needed.
@@ -395,4 +423,3 @@ public class GameScreen implements Screen {
         }
     }
 }
-

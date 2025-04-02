@@ -1,5 +1,6 @@
 package com.badlogic.affirmation_adventures;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
@@ -22,14 +23,13 @@ public class MainMenuScreen implements Screen {
     boolean showInstructions = true;
     Rectangle playButtonBounds;
 
-
     final affirmation_adventures game;
 
     /**
      * Constructs a new MainMenuScreen.
+     *
      * @param game the main game instance
      */
-
     public MainMenuScreen(final affirmation_adventures game) {
         this.game = game;
 
@@ -42,11 +42,20 @@ public class MainMenuScreen implements Screen {
         playButtonBounds = new Rectangle();
 
     }
+
+    /**
+     * Called when this screen becomes the current screen for a {@link Game}.
+     */
     @Override
     public void show() {
         // Prepare your screen here.
     }
 
+    /**
+     * Called when the screen should render itself.
+     *
+     * @param delta The time in seconds since the last render.
+     */
     @Override
     public void render(float delta) {
         draw();
@@ -55,7 +64,6 @@ public class MainMenuScreen implements Screen {
     /**
      * Handles the drawing of the main menu screen.
      */
-
     private void draw() {
         ScreenUtils.clear(Color.BLACK);
 
@@ -79,12 +87,10 @@ public class MainMenuScreen implements Screen {
         float instructionsButtonX = (worldWidth - instructionsTexture.getWidth()) / 2;
         float instructionsButtonY = (worldHeight - instructionsTexture.getHeight()) / 2;
 
-        /* if (showInstructions) {
+        if (showInstructions) {
             game.batch.draw(instructionsTexture, instructionsButtonX, instructionsButtonY);
         }
 
-
-         */
         game.batch.end();
 
         if (Gdx.input.isTouched()) {
@@ -98,32 +104,53 @@ public class MainMenuScreen implements Screen {
             if (playButtonBounds.contains(touchX, touchY)) {
                 game.setScreen(new GameScreen(game));
                 dispose();
+            } else if (showInstructions && touchX >= instructionsButtonX && touchX <= instructionsButtonX + instructionsTexture.getWidth() &&
+                touchY >= instructionsButtonY && touchY <= instructionsButtonY + instructionsTexture.getHeight()) {
+                showInstructions = false;
             }
 
         }
     }
 
+    /**
+     * Called when the screen is resized.
+     *
+     * @param width  the new width
+     * @param height the new height
+     */
     @Override
     public void resize(int width, int height) {
         // Resize your screen here. The parameters represent the new window size.
         game.viewport.update(width, height, true);
     }
 
+    /**
+     * Called when the game is paused.
+     */
     @Override
     public void pause() {
         // Invoked when your application is paused.
     }
 
+    /**
+     * Called when the game is resumed from a paused state.
+     */
     @Override
     public void resume() {
         // Invoked when your application is resumed after pause.
     }
 
+    /**
+     * Called when this screen is no longer the current screen for a {@link Game}.
+     */
     @Override
     public void hide() {
         // This method is called when another screen replaces this one.
     }
 
+    /**
+     * Called when this screen should release all resources.
+     */
     @Override
     public void dispose() {
         playButton.dispose();

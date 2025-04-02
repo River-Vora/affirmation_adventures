@@ -10,7 +10,6 @@ instructions.png
 playbutton.png
 player.png
 popup_imageEdited.png
-volume-button.png
 youAreAwesome.png
 youAreBold.png
 youAreEnough.png

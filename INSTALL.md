@@ -5,4 +5,4 @@
 ```bash
 sudo xattr -rd com.apple.quarantine path/to/your/download
 ```
-- On Linux or Windows you don't need to do this.
+- On Linux download affirmation_adventures, on Windows download the affirmation_adventures.exe file.
